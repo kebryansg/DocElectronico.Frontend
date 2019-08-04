@@ -1,0 +1,23 @@
+<app-title-pag [title]="'Listado de Proveedores - Pendientes de Ingreso'"></app-title-pag>
+<button class="btn btn-outline-danger mb-3" (click)="getItems()">
+  Refrescar
+</button>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">RUC</th>
+    <th scope="col">RAZON SOCIAL</th>
+    <th scope="col">NOMBRE COMERCIAL</th>
+    <th scope="col">Cant. Facturas</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let proveedor of lsProveedor">
+    <td>{{ proveedor.PVRUC }}</td>
+    <td>{{ proveedor.PVRAZONSOCIAL}}</td>
+    <td>{{ proveedor.PVNOMBRECOMERCIAL}}</td>
+    <td>{{ proveedor.Facturas}}</td>
+  </tr>
+  </tbody>
+</table>
