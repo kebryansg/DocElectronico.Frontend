@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {ListDocComponent} from './components/list-doc/list-doc.component';
 import {AdminComponent} from './layout/admin/admin.component';
 import {UploadComponent} from './components/upload/upload.component';
 import {ProveedorPendienteComponent} from './components/proveedor-pendiente/proveedor-pendiente.component';
@@ -8,7 +7,7 @@ import {ProveedorPendienteComponent} from './components/proveedor-pendiente/prov
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'admin/documentos',
+    redirectTo: 'admin/factura/registro',
     pathMatch: 'full'
   },
   {
@@ -16,8 +15,8 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       {
-        path: 'documentos',
-        component: ListDocComponent
+        path: 'factura',
+        loadChildren: './components/factura/factura.module#FacturaModule'
       },
       {
         path: 'upload',

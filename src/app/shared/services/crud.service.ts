@@ -11,10 +11,15 @@ export class CrudService {
   url: string;
 
   constructor(private http: HttpClient) {
-    this.url = (configuracion) ? configuracion.url : 'http://localhost:3000/';
+    // this.url = (configuracion) ? configuracion.url : 'http://localhost:3000/';
+    this.url = 'http://localhost:3000/';
   }
 
   get(path: string, params?: any) {
+    return this.http.get(this.url + path, { params: params });
+  }
+
+  getAsync(path: string, params?: any) {
     return this.http.get(this.url + path, { params: params }).toPromise();
   }
 

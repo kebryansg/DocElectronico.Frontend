@@ -18,7 +18,7 @@ export class ProveedorPendienteComponent implements OnInit {
   }
 
   async getItems() {
-    this.lsProveedor = <any[]>await this.crudService.get('documentos/pendiente-proveedor');
+    this.lsProveedor = <any[]> await this.crudService.getAsync('proveedor/pendiente-registro');
   }
 
 }

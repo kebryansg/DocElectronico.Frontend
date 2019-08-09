@@ -1,0 +1,105 @@
+<app-title-pag [title]="'Facturas Pendientes de Registro'"></app-title-pag>
+<div class="container-fluid">
+
+  <!--<div class="row mt-3">
+    <div class="col-md-12">
+      <div class="float-left">
+        <button type="button" class="btn btn-outline-dark " (click)="getDocs()">Cargar Facturas</button>
+      </div>
+
+      <div class="float-right">
+        <button type="button" class="btn btn-outline-primary" (click)="ignoreFacturas()" [disabled]="resultJSON.length == 0">
+          Omitir Factura(s)
+        </button>
+
+        <button type="button" class="btn btn-outline-primary" (click)="uploadFacturas()" [disabled]="resultJSON.length == 0">
+          Registrar Factura(s)
+        </button>
+      </div>
+    </div>
+  </div>-->
+
+  <div class="row mt-3">
+    <div class="col-md-4">
+
+      <div class="float-left">
+        <button type="button" class="btn btn-outline-dark " (click)="getDocs()">Cargar Facturas</button>
+      </div>
+
+      <div class="float-right">
+        <input type="text" placeholder="Buscar RUC" class="form-control" [(ngModel)]="search" >
+<!--        (keyup)="filterProveedor($event)"-->
+      </div>
+
+      <div class="clearfix"></div>
+
+      <div class="list-group mt-3">
+
+        <a href="javascript:;" class="list-group-item list-group-item-action"
+           *ngFor="let proveedor of lsProveedor | async | filter:search " (click)="viewFactura(proveedor)">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ proveedor.RUC }}</h5>
+          </div>
+          <p class="mb-1">{{ proveedor.RazonSocial }}</p>
+        </a>
+
+      </div>
+
+    </div>
+    <div class="col-md-8">
+
+      <div class="float-left">
+        <span class="h5" #ProveedorSelect> </span>
+      </div>
+
+      <div class="float-right">
+        <button type="button" class="btn btn-outline-primary ml-1" (click)="ignoreFacturas()">
+          Omitir Factura(s)
+        </button>
+
+        <button type="button" class="btn btn-outline-primary ml-1" (click)="uploadFacturas()">
+          Registrar Factura(s)
+        </button>
+      </div>
+
+      <div class="clearfix"></div>
+
+      <table class="table table-striped mt-3">
+        <thead>
+        <tr>
+          <th scope="col">
+            <input type="checkbox" [checked]="setAll" (change)="selectAll()">
+          </th>
+          <th scope="col">#</th>
+          <th scope="col">N Documento</th>
+          <th scope="col">Fecha Emisión</th>
+          <th scope="col">Fecha Autorización</th>
+          <th scope="col">Subtotal 0</th>
+          <th scope="col">Subtotal 12</th>
+          <th scope="col">IVA</th>
+          <th scope="col">Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let doc of lsFactCompra; index as i">
+          <td>
+            <input type="checkbox"
+                   [checked]="doc.select"
+                   [(ngModel)]="doc.select">
+          </td>
+          <td>{{ doc.ID }}</td>
+          <td>{{ doc.NUMERODOCUMENTO }}</td>
+          <td>{{ doc.FECHAEMISION | date }}</td>
+          <td>{{ doc.FECHAAUTORIZACION | date }}</td>
+          <td>{{ doc.SUBTOTALSINIMPUESTO | number:'.1-3' }}</td>
+          <td>{{ doc.SUBTOTALCONIMPUESTO | number:'.1-3' }}</td>
+          <td>{{ doc.IVA | number:'.1-3' }}</td>
+          <td>{{ doc.TOTAL | number:'.1-3' }}</td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+</div>

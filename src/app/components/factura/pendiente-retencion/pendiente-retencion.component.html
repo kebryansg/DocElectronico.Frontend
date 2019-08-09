@@ -1,0 +1,81 @@
+<app-title-pag [title]="'Facturas Pendientes de Retención'"></app-title-pag>
+
+<div class="float-right">
+  <!--  <input type="text" class="form-control" placeholder="RUC - N Factura - Autorización">-->
+
+  <div class="input-group mb-3 search-input">
+    <div class="input-group-prepend">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon1">
+        Buscar
+      </button>
+    </div>
+    <input type="text" class="form-control" placeholder="RUC - N Factura - Autorización" [(ngModel)]="search"
+           (keydown.enter)="loadItems()" aria-label="Example text with button addon" aria-describedby="button-addon1">
+  </div>
+
+</div>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col"># Factura</th>
+    <th scope="col">Autorización</th>
+    <th scope="col">Fecha</th>
+    <th scope="col">RUC Proveedor</th>
+    <th scope="col">Proveedor</th>
+
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let fc of rows; index as i">
+    <td>{{ fc.IDFC }}</td>
+    <td>{{ fc.Numero }}</td>
+    <td>{{ fc.Autorizacion }}</td>
+    <td>{{ fc.Fecha | date }}</td>
+    <td>{{ fc.idpv.CEDRUC }}</td>
+    <td>{{ fc.idpv.Nombre }}</td>
+  </tr>
+  </tbody>
+</table>
+
+<!--<ngx-datatable
+  class='bootstrap'
+  [rows]='rows'
+  [columnMode]="'force'"
+  [headerHeight]="50"
+  [footerHeight]="50"
+  [scrollbarH]="true">
+
+  <ngx-datatable-column name="Factura">
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+      <strong>{{row.IDFC}}</strong>
+    </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-column name="Fecha">
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+      {{row.Fecha}}
+    </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-column name="Proveedor">
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+      {{row.idpv.Nombre}}
+    </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-column name="Autorizacion">
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+      {{row.Autorizacion}}
+    </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-column name="Numero">
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+      {{row.Numero}}
+    </ng-template>
+  </ngx-datatable-column>
+
+</ngx-datatable>-->
