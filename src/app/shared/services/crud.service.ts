@@ -12,7 +12,7 @@ export class CrudService {
 
   constructor(private http: HttpClient) {
     // this.url = (configuracion) ? configuracion.url : 'http://localhost:3000/';
-    this.url = 'http://localhost:3000/';
+    this.url = 'http://localhost:3001/';
   }
 
   get(path: string, params?: any) {

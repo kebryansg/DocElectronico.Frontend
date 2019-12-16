@@ -1,0 +1,42 @@
+<form [formGroup]="itemForm" (submit)="submitFacturaCompra()" action="javascript:" (keydown.enter)="$event.preventDefault()">
+  <div class="row">
+    <div class="col-md-12">
+      <app-title-pag [title]="'Exportación Factura Compra'"></app-title-pag>
+    </div>
+    <div class="col-md-12 row">
+      <div class="col-sm-12 col-md-4">
+        <div class="form-group form-default row">
+          <label class="col-sm-12 col-form-label">Escoger Fecha</label>
+          <div class="col-sm-12">
+
+            <ng-select appendTo="body"
+                       appearance="outline"
+                       class="mb-1"
+                       [formControl]="itemForm.controls['TipoFecha']">
+              <ng-option *ngFor="let eTime of lsEstadosTime"
+                         [value]="eTime.Id">
+                {{eTime.Descripcion}}
+              </ng-option>
+            </ng-select>
+
+            <input *ngIf="itemForm.controls['TipoFecha'].value != 'EF'" type="text" readonly class="form-control"
+                   [value]="itemForm.controls['Fechas'].value | fechaRange">
+            <app-date-range-selection *ngIf="itemForm.controls['TipoFecha'].value == 'EF'"
+                                      [from]="defaultFrom" [to]="defaultFrom"
+                                      (dateRangeSelection)="onDateRangeSelection($event)"></app-date-range-selection>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="pull-left">
+        <button class="btn btn-success"
+                [ngClass]="{'btn-disabled': itemForm.invalid}" [disabled]="itemForm.invalid">
+          Consultar
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+</form>

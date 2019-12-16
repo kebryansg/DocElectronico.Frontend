@@ -1,0 +1,20 @@
+<div class="form-group">
+  <div class="input-group" id="dateRangePicker">
+    <i class="fa fa-arrow-down material-icons"></i>
+    <input class="form-control" id="dateRange" [placeholder]="placeholder" name="dp" [value]="formattedDateRange"
+           ngbDatepicker
+           #dp="ngbDatepicker" (dateSelect)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t"
+           [autoClose]="false"
+           (click)="dp.toggle(); isOpen = !isOpen" readonly/>
+  </div>
+</div>
+
+
+<ng-template #t let-date="date" let-focused="focused">
+  <span class="custom-day" [class.focused]="focused"
+        [class.range]="isFrom(date) || isTo(date) || isInside(date) || isHovered(date)"
+        [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = toDate(date)"
+        (mouseleave)="hoveredDate = null">
+    {{ date.day }}
+  </span>
+</ng-template>

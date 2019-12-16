@@ -19,6 +19,10 @@ const routes: Routes = [
         loadChildren: './components/factura/factura.module#FacturaModule'
       },
       {
+        path: 'exportacion',
+        loadChildren: './components/export/export.module#ExportModule'
+      },
+      {
         path: 'upload',
         component: UploadComponent
       },
