@@ -14,7 +14,7 @@ export class DataService {
       {Id: 'UD', Descripcion: 'Último 7 días'},
       {Id: 'MA', Descripcion: 'Mes Actual'},
       {Id: 'MP', Descripcion: 'Mes Anterior'},
-      {Id: 'EF', Descripcion: 'Perzonalida'},
+      {Id: 'EF', Descripcion: 'Fecha Personalida'},
     ];
   }
 
