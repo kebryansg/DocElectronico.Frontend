@@ -27,7 +27,7 @@
     "file-saver": "^2.0.2",
     "font-awesome-scss": "^1.0.0",
     "jquery": "^3.4.1",
-    "moment": "2.22.1",
+    "moment": "2.29.2",
     "ngx-xml2json": "^1.0.2",
     "rxjs": "~6.3.3",
     "sweetalert2": "^7.19.3",
